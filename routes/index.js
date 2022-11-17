@@ -3,7 +3,13 @@ const user = require("../controllers/user");
 const middleware = require("../middleware/mustLogin");
 const { User } = require('../models')
 
-router.get('/', async (req, res, next) => {
+router.get('/', (req, res) => {
+  return res.status(200).json({
+    status: true,
+    message: 'success'
+  })
+})
+router.get('/user', async (req, res, next) => {
   try {
     const user = await User.findAll()
 
